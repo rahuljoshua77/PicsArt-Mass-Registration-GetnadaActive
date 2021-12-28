@@ -9,6 +9,4 @@ A tool that can mass registration picsart with getnada.com
     
     2. Open CMD on Bot Folder: pip install -r requirements.txt
     
-    3. Fill the config.py with your credit
-    
-    4. Run the script
+    3. Run the script
