@@ -55,7 +55,7 @@ def sign_up(k):
         
         try:
             global uid
-            sleep(2)
+            sleep(1)
             uid = r['msgs'][0]['uid']
         
             mes = requests.get(f'https://getnada.com/api/v1/messages/html/{uid}')
