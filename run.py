@@ -36,7 +36,11 @@ def sign_up(k):
     soup = BeautifulSoup(r.text, 'html.parser')
     res = json.loads(soup.text)
     if res["message"] == "You are registered successfully":
-        print(f"[*] [{email} "+res["message"])     
+        print(f"[*] [{email} "+res["message"])   
+        
+    elif res["message"] == "Concurrent requests limit exceeded. Please try later":
+        print(f"[*] Change your IP, Limit exceeded")
+        quit()
     else:
         print(f"[*] [{email} "+res["message"])
     n=1
@@ -70,9 +74,10 @@ def sign_up(k):
                 f.write(f"{email}|{password}\n")
             break
         except IndexError:
+            
             print(f"[*] [{email} Your Email doesn't have a new message, Reload!")
             n = n+1
-      
+     
 
 if __name__ == '__main__':
     global prefix
