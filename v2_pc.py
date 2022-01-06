@@ -91,7 +91,7 @@ def sign_up(email, password,new_cc):
     browser = webdriver.Chrome(options=firefox_options,executable_path=driver_path)
     browser.execute_script("document.body.style.zoom='zoom 90%'")
     browser.get('https://picsart.com/universe-trial')
-    print("[*] Trying to Creating New Account...!")
+    print("[+] Trying to Creating New Account...!")
     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Trying to Creating New Account...! \n')
      
     element_all = wait(browser,0.3).until(EC.presence_of_element_located((By.XPATH,'(//span[contains(@class,"button-text")])[1]')))
@@ -123,14 +123,14 @@ def sign_up(email, password,new_cc):
                 except:
                     try:
                         wait(browser,0.5).until(EC.presence_of_element_located((By.XPATH, f"//span[contains(text(),'Something went wrong!')]")))
-                        print("[*] Run Again! Change IP!")
+                        print("[+] Run Again! Change IP!")
                         break
                     except:
                         pass
         while True:
                 
             if n == 5:
-                print("[*] Verification Failed!")
+                print("[+] Verification Failed!")
                 with open('log.txt','a',encoding='utf-8') as f: f.write(f'Verification Failed!\n')
                 break
             URL = f'https://getnada.com/api/v1/inboxes/{email}'
@@ -150,21 +150,21 @@ def sign_up(email, password,new_cc):
                 get_data = get_data[0]
                 get_data = get_data.split('"')
                 url_activation = f'https://picsart.com/activate/{get_data[0]}'
-                print(f'[*] Creating New Account Success!')
+                print(f'[+] Creating New Account Success!')
                 with open('log.txt','a',encoding='utf-8') as f: f.write(f'Creating New Account Success! \n')
                 requests.get(f'https://picsart.com/activate/{get_data[0]}')
-                print("[*] Verification Email Success!")
+                print("[+] Verification Email Success!")
                 with open('log.txt','a',encoding='utf-8') as f: f.write(f'Verification Email Success!\n')
-                print("[*] Please wait while you are now trying to Execution the PicsArt Account with this Credit Card details...")
+                print("[+] Please wait while you are now trying to Execution the PicsArt Account with this Credit Card details...")
                 with open('log.txt','a',encoding='utf-8') as f: f.write(f'Please wait while you are now trying to Execution the PicsArt Account with this Credit Card details... \n')
                 #auto_pay(email, password)
                 break
             except IndexError:
-                print("[*] Your Email doesn't have a new message, Reload!")
+                print("[+] Your Email doesn't have a new message, Reload!")
                 with open('log.txt','a',encoding='utf-8') as f: f.write("Your Email doesn't have a new message, Reload! \n")
                 n = n+1
                 sleep(2)
-        print(f"[*] {number_card}|{month}|{year}|{security_card}|{name_card}|")
+        print(f"[+] {number_card}|{month}|{year}|{security_card}|{name_card}|")
         wait(browser, 40).until(EC.frame_to_be_available_and_switch_to_it((By.XPATH,"(//iframe[contains(@src,'https://checkoutshopper-live.adyen.com/')])[1]")))
         input_number_card = wait(browser,30).until(EC.presence_of_element_located((By.XPATH, f'//input[@id="encryptedCardNumber"]')))
         input_number_card.send_keys(number_card)
@@ -210,16 +210,16 @@ def sign_up(email, password,new_cc):
             while True:
                 if n == 5:
             
-                    print(f"[*] Unfortunately... the Auto Payment & Invoice was Failed :(")
-                    print(f"[*] Your previous Credit Card was successfully used and deleted from cc.txt")
+                    print(f"[+] Unfortunately... the Auto Payment & Invoice was Failed :(")
+                    print(f"[+] Your previous Credit Card was successfully used and deleted from cc.txt")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Your previous Credit Card was successfully used and deleted from cc.txt \n')
-                    print(f"[*] And here are details of your previous Credit Card")
+                    print(f"[+] And here are details of your previous Credit Card")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'And here are details of your previous Credit Card \n')
-                    print(f"[*] {number_card}|{month}|{year}|{security_card}|{name_card}|")
+                    print(f"[+] {number_card}|{month}|{year}|{security_card}|{name_card}|")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'{number_card}|{month}|{year}|{security_card}|{name_card}| \n')
-                    print(f"[*] Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User")
+                    print(f"[+] Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User\n')
-                    print(f"[*] You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx")
+                    print(f"[+] You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx\n')
                   
                     lst = [f"{email}|{password}"]
@@ -253,10 +253,10 @@ def sign_up(email, password,new_cc):
                     
                     data = get_data.split('''<p style="margin:44px 0 16px 0;color:#080808;font-size:24px;line-height:32px;font-weight:600;font-family:'Open Sans',Arial,sans-serif;">''')
                     data = data[1].split("Picsart Gold!")
-                    #print(f"[*] {data[0].strip()} Picsart Gold!")
+                    #print(f"[+] {data[0].strip()} Picsart Gold!")
                     data = get_data.split('Your Picsart Gold subscription')
                     data = data[1].split("To avoid being charged, you must")
-                    #print(f"[*] Your Picsart Gold subscription {data[0].strip()}")
+                    #print(f"[+] Your Picsart Gold subscription {data[0].strip()}")
                     date = data[0].split('on')
                     userdata = get_data.split('Username:')
                     userdata = userdata[1].split('''<td style="width:50%;vertical-align:top;padding:16px 0 0 16px;font-size:14px;line-height:20px;color:#080808;font-family:'Open Sans',Arial,sans-serif;">''')
@@ -268,19 +268,19 @@ def sign_up(email, password,new_cc):
                     date_buy = data[0].strip()
                     date_end = date[1].strip()
                     username = userdata[0].strip()
-                    print("[*] Welcome To Gold!")
+                    print("[+] Welcome To Gold!")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Welcome To Gold! \n')
-                    print("[*] Auto Payment Success!")
+                    print("[+] Auto Payment Success!")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Auto Payment Success! \n')
-                    print(f"[*] Invoice Success!")
+                    print(f"[+] Invoice Success!")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Invoice Success! \n')
-                    print(f"[*] Your previous Credit Card was successfully used and deleted from cc.txt")
+                    print(f"[+] Your previous Credit Card was successfully used and deleted from cc.txt")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Your previous Credit Card was successfully used and deleted from cc.txt \n')
-                    print(f"[*] And here are details of your previous Credit Card")
+                    print(f"[+] And here are details of your previous Credit Card")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'And here are details of your previous Credit Card \n')
-                    print(f"[*] {number_card}|{month}|{year}|{security_card}|{name_card}|")
+                    print(f"[+] {number_card}|{month}|{year}|{security_card}|{name_card}|")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'{number_card}|{month}|{year}|{security_card}|{name_card}| \n')
-                    print(f"[*] And these are few details of your PicsArt Account")
+                    print(f"[+] And these are few details of your PicsArt Account")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'And these are few details of your PicsArt Account \n')
                     date_end = date_end.replace('.','')
                     data_month_buy = date_buy.split(",")
@@ -296,18 +296,23 @@ def sign_up(email, password,new_cc):
                     get_month_int_end = "0"+str(get_idx_month_end)
                     date_buy_tgl = re.findall(r'\d+',date_buy)
                     date_end_tgl = re.findall(r'\d+',date_end)
-                    print(f"[*] Username: {username} | Start: {date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy}) | Exp: {date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end}) |")
-                    with open('log.txt','a',encoding='utf-8') as f: f.write(f'Username: {username} | Start: {date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy}) | Exp: {date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end}) | \n')
+                    if len(str(date_buy_tgl[0])) == 1:
+                        date_buy_tgl[0] = f"0{date_buy_tgl[0]}"
+                    if len(str(date_end_tgl[0])) == 1:
+                        date_end_tgl[0] = f"0{date_buy_tgl[0]}"   
+                         
+                    print(f"[+] Username: {username} | Start: {date_buy_tgl[0]}/{get_month_int_buy}/2022 ({date_buy}) | Exp: {date_end_tgl[0]}/{get_month_int_end}/2022 ({date_end}) |")
+                    with open('log.txt','a',encoding='utf-8') as f: f.write(f'Username: {username} | Start: {date_buy_tgl[0]}/{get_month_int_buy}-2022 ({date_buy}) | Exp: {date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end}) | \n')
                      
                     with open('resultsuccess.txt','a') as f:
-                        f.write(f"{email}|{password}|{date_buy_tgl[0]}{get_month_int_buy}-2022 ({date_buy})|{date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|\n")
+                        f.write(f"{email}|{password}|{date_buy_tgl[0]}/{get_month_int_buy}/2022 ({date_buy})|{date_end_tgl[0]}/{get_month_int_end}/2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|\n")
                   
                     book = load_workbook('resultsuccess.xlsx')
                     writer = pandas.ExcelWriter('resultsuccess.xlsx', engine='openpyxl')
                     writer.book = book
                     writer.sheets = {ws.title: ws for ws in book.worksheets}
                     
-                    lst = [f"{email}|{password}|{date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy})|{date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|"]
+                    lst = [f"{email}|{password}|{date_buy_tgl[0]}/{get_month_int_buy}/2022 ({date_buy})|{date_end_tgl[0]}/{get_month_int_end}/2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|"]
                    
                     df = pd.DataFrame(lst)
                     for sheetname in writer.sheets:
@@ -319,28 +324,28 @@ def sign_up(email, password,new_cc):
                     for m in dats[:]:
                         with open('cc.txt','a',encoding='utf-8') as f: f.write(f'{m}\n')
 
-                    print(f"[*] Great Job! The data now was saved to resultsuccess.txt & resultsuccess.xlsx")
+                    print(f"[+] Great Job! The data now was saved to resultsuccess.txt & resultsuccess.xlsx")
                     with open('log.txt','a',encoding='utf-8') as f: f.write(f'Great Job! The data now was saved to resultsuccess.txt & resultsuccess.xlsx \n')
                     break
 
                 except IndexError:
-                    #print("[*] Your Email doesn't have a new message, Reload!")
+                    #print("[+] Your Email doesn't have a new message, Reload!")
                     n = n+1
 
              
         except Exception as e:
           
             
-            print(f"[*] Unfortunately... the Auto Payment & Invoice was Failed :(")
-            print(f"[*] Your previous Credit Card was successfully used and deleted from cc.txt")
+            print(f"[+] Unfortunately... the Auto Payment & Invoice was Failed :(")
+            print(f"[+] Your previous Credit Card was successfully used and deleted from cc.txt")
             with open('log.txt','a',encoding='utf-8') as f: f.write(f'Your previous Credit Card was successfully used and deleted from cc.txt \n')
-            print(f"[*] And here are details of your previous Credit Card")
+            print(f"[+] And here are details of your previous Credit Card")
             with open('log.txt','a',encoding='utf-8') as f: f.write(f'And here are details of your previous Credit Card \n')
-            print(f"[*] {number_card}|{month}|{year}|{security_card}|{name_card}|")
+            print(f"[+] {number_card}|{month}|{year}|{security_card}|{name_card}|")
             with open('log.txt','a',encoding='utf-8') as f: f.write(f'{number_card}|{month}|{year}|{security_card}|{name_card}| \n')
-            print(f"[*] Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User")
+            print(f"[+] Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User")
             with open('log.txt','a',encoding='utf-8') as f: f.write(f'Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User\n')
-            print(f"[*] You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx")
+            print(f"[+] You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx")
             with open('log.txt','a',encoding='utf-8') as f: f.write(f'You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx\n')
             lst = [f"{email}|{password}"]
             book = load_workbook('resultfailed.xlsx')
@@ -362,16 +367,16 @@ def sign_up(email, password,new_cc):
 
     except Exception as e:
        
-        print(f"[*] Unfortunately... the Auto Payment & Invoice was Failed :(")
-        print(f"[*] Your previous Credit Card was successfully used and deleted from cc.txt")
+        print(f"[+] Unfortunately... the Auto Payment & Invoice was Failed :(")
+        print(f"[+] Your previous Credit Card was successfully used and deleted from cc.txt")
         with open('log.txt','a',encoding='utf-8') as f: f.write(f'Your previous Credit Card was successfully used and deleted from cc.txt \n')
-        print(f"[*] And here are details of your previous Credit Card")
+        print(f"[+] And here are details of your previous Credit Card")
         with open('log.txt','a',encoding='utf-8') as f: f.write(f'And here are details of your previous Credit Card \n')
-        print(f"[*] {number_card}|{month}|{year}|{security_card}|{name_card}|")
+        print(f"[+] {number_card}|{month}|{year}|{security_card}|{name_card}|")
         with open('log.txt','a',encoding='utf-8') as f: f.write(f'{number_card}|{month}|{year}|{security_card}|{name_card}| \n')
-        print(f"[*] Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User")
+        print(f"[+] Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User")
         with open('log.txt','a',encoding='utf-8') as f: f.write(f'Error Verifying reCAPTCHA| Your Payment was Failed| Retry Limitation User\n')
-        print(f"[*] You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx")
+        print(f"[+] You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx")
         with open('log.txt','a',encoding='utf-8') as f: f.write(f'You Can Try it Again Later! The data now was saved to resultfailed.txt & resultfailed.xlsx\n')
         lst = [f"{email}|{password}"]
         book = load_workbook('resultfailed.xlsx')
@@ -397,9 +402,9 @@ def sign_up(email, password,new_cc):
 
 def main():
     global dats
-    print("[*] Auto Verification & Auto Payment PicsArt Gold Premium 3 Months with collaboration Brave Browser x GetNada x NamsoGen x MrChecker")
-    with open('log.txt','a',encoding='utf-8') as f: f.write(f'[*] Auto Verification & Auto Payment PicsArt Gold Premium 3 Months with collaboration Brave Browser x GetNada x NamsoGen x MrChecker\n')
-    print("[*] URL Activation: https://picsart.com/universe-trial | BIN: 52297444xxxxxxxx")
+    print("[+] Auto Verification & Auto Payment PicsArt Gold Premium 3 Months with collaboration Brave Browser x GetNada x NamsoGen x MrChecker")
+    with open('log.txt','a',encoding='utf-8') as f: f.write(f'[+] Auto Verification & Auto Payment PicsArt Gold Premium 3 Months with collaboration Brave Browser x GetNada x NamsoGen x MrChecker\n')
+    print("[+] URL Activation: https://picsart.com/universe-trial | BIN: 543896xxxxxxx85x")
     with open('log.txt','a',encoding='utf-8') as f: f.write(f'URL Activation: https://picsart.com/universe-trial | BIN: 52297444xxxxxxxx\n')
     password = "panda123"
     file_list_akun = "cc.txt"
@@ -409,9 +414,9 @@ def main():
     global number
     number = 1
     for i in dats:
-        email = input("[*] Email (example: test123asa@getairmail.com): ")
-        with open('log.txt','a',encoding='utf-8') as f: f.write(f'Email (example: test123asa@getairmail.com): {email}\n')
-        print("[*] Your Default Password is: panda123")
+        email = input("[+] Please Submit Your Email: ")
+        with open('log.txt','a',encoding='utf-8') as f: f.write(f'Please Submit Your Email: {email}\n')
+        print("[+] Your Default Password is: panda123")
         with open('log.txt','a',encoding='utf-8') as f: f.write(f'Your Default Password is: panda123\n')
         sign_up(email, password, i)
         #os\.system\("notepad\.exe cc\.txt"\)
