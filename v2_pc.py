@@ -296,18 +296,18 @@ def sign_up(email, password,new_cc):
                     get_month_int_end = "0"+str(get_idx_month_end)
                     date_buy_tgl = re.findall(r'\d+',date_buy)
                     date_end_tgl = re.findall(r'\d+',date_end)
-                    print(f"[*] Username: {username} | Start: {date_buy_tgl}-{get_month_int_buy}-2022 ({date_buy}) | Exp: {date_end_tgl}-{get_month_int_end}-2022 ({date_end}) |")
-                    with open('log.txt','a',encoding='utf-8') as f: f.write(f'Username: {username} | Start: 01-{get_month_int_buy}-2022 ({date_buy}) | Exp: 01-{get_month_int_end}-2022 ({date_end}) | \n')
+                    print(f"[*] Username: {username} | Start: {date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy}) | Exp: {date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end}) |")
+                    with open('log.txt','a',encoding='utf-8') as f: f.write(f'Username: {username} | Start: {date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy}) | Exp: {date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end}) | \n')
                      
                     with open('resultsuccess.txt','a') as f:
-                        f.write(f"{email}|{password}|-{get_month_int_buy}-2022 ({date_buy})|01-{get_month_int_end}-2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|\n")
-                    row = 0
+                        f.write(f"{email}|{password}|{date_buy_tgl[0]}{get_month_int_buy}-2022 ({date_buy})|{date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|\n")
+                  
                     book = load_workbook('resultsuccess.xlsx')
                     writer = pandas.ExcelWriter('resultsuccess.xlsx', engine='openpyxl')
                     writer.book = book
                     writer.sheets = {ws.title: ws for ws in book.worksheets}
                     
-                    lst = [f"{email}|{password}|{date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy})|{date_end_tgl}-{get_month_int_end}-2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|"]
+                    lst = [f"{email}|{password}|{date_buy_tgl[0]}-{get_month_int_buy}-2022 ({date_buy})|{date_end_tgl[0]}-{get_month_int_end}-2022 ({date_end})|{number_card}|{month}|{year}|{security_card}|{name_card}|Welcome To Gold!|"]
                    
                     df = pd.DataFrame(lst)
                     for sheetname in writer.sheets:
